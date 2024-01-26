@@ -1,23 +1,28 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./home.css";
-import video from "../Assets/video.mp4";
 import { IoLocation } from "react-icons/io5";
 import { FaFilter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaGithub } from "react-icons/fa";
 
+import Aos, { init } from 'aos';
+import 'aos/dist/aos.css'
+
 const Home = () => {
+    useEffect(()=>{
+        Aos.init({duration:2000})
+    },[])
     return (
         <section className="home">
             <div className="overlay"></div>
-            <video src={video} muted autoPlay loop type="video/mp4"></video>
+            <video src="/Assets/bgslayt.mp4" muted autoPlay loop type="video/mp4"></video>
             <div className="homeContent container">
                 <div className="textDiv">
-                    <span className="smallText">Our Packages</span>
-                    <h1 className="homeTitle">Search your Holiday</h1>
+                    <span data-aos="fade-up" className="smallText">Our Packages</span>
+                    <h1 data-aos="fade-up" className="homeTitle">Search your Holiday</h1>
                 </div>
-                <div className="cardDiv grid">
+                <div data-aos="fade-up" className="cardDiv grid">
                     <div className="destinationInput">
                         <label htmlFor="city">Search your destination:</label>
                         <div className="input flex">
@@ -40,7 +45,7 @@ const Home = () => {
                             <h3 className="total">$5000</h3>
                         </div>
                         <div className="input flex">
-                            <input type="range" max="5000" min="1000" />
+                            <input type="range" max="5000" min="1000" value="5000"/>
                         </div>
                     </div>
                     <div className="searchOptions flex">
@@ -48,7 +53,7 @@ const Home = () => {
                         <span>More Filters</span>
                     </div>
                 </div>
-                <div className="homeFooterIcons flex">
+                <div data-aos="fade-up" className="homeFooterIcons flex">
                     <div className="rightIcons">
                         <FaInstagram className="icon" />
                         <FaTwitter className="icon" />

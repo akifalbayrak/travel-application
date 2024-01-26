@@ -1,13 +1,13 @@
-import React from "react";
+import React,{useEffect} from "react";
 import "./main.css";
-import photo from "../Assets/photo.jpg";
 import { CiLocationOn } from "react-icons/ci";
 import { FaClipboardList } from "react-icons/fa6";
-
+import Aos, { init } from 'aos';
+import 'aos/dist/aos.css'
 const Data = [
     {
         id: 1,
-        imgSrc: photo,
+        imgSrc: "/Assets/istanbul.jpeg",
         desTitle: "Turkey",
         location: "Istanbul",
         grade: "Culturel Relax",
@@ -17,7 +17,7 @@ const Data = [
     },
     {
         id: 2,
-        imgSrc: photo,
+        imgSrc: "/Assets/paris.jpeg",
         desTitle: "France",
         location: "Paris",
         grade: "Historical Adventure",
@@ -26,7 +26,7 @@ const Data = [
     },
     {
         id: 3,
-        imgSrc: photo,
+        imgSrc: "/Assets/tokyo.jpeg",
         desTitle: "Japan",
         location: "Tokyo",
         grade: "Modern Exploration",
@@ -35,7 +35,7 @@ const Data = [
     },
     {
         id: 4,
-        imgSrc: photo,
+        imgSrc: "/Assets/rome.jpeg",
         desTitle: "Italy",
         location: "Rome",
         grade: "Artistic Journey",
@@ -44,7 +44,7 @@ const Data = [
     },
     {
         id: 5,
-        imgSrc: photo,
+        imgSrc: "/Assets/sydney.jpeg",
         desTitle: "Australia",
         location: "Sydney",
         grade: "Nature Retreat",
@@ -53,10 +53,13 @@ const Data = [
     }
 ];
 const Main = () => {
+    useEffect(()=>{
+        Aos.init({duration:2000})
+    },[])
     return (
         <section className="main container section">
             <div className="secTitle">
-                <h3 className="title">Most visited destinations</h3>
+                <h3 data-aos="fade-right" className="title">Most visited destinations</h3>
             </div>
             <div className="secContent grid">
                 {Data.map(
@@ -70,9 +73,9 @@ const Main = () => {
                         description,
                     }) => {
                         return (
-                            <div key={id} className="singleDestination">
+                            <div key={id} data-aos="fade-up" className="singleDestination">
                                 <div className="imageDiv">
-                                    <img src={photo} alt={desTitle} />
+                                    <img src={imgSrc} alt={desTitle} />
                                 </div>
                                 <div className="cardInfo">
                                     <h4 className="desTitle">{desTitle}</h4>
